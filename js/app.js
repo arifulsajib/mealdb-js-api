@@ -1,5 +1,6 @@
 // fetch meals
 const fetchMeals = (search) => {
+  showLoading(true);
   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
     .then((res) => res.json())
     .then((data) => displayMeals(data.meals));
@@ -18,7 +19,7 @@ const displayMeals = (meals) => {
     mealDiv.setAttribute("type", "button");
 
     mealDiv.innerHTML = `
-    <div class="card bg-primary-subtle border-0 shadow-lg rounded-4" onclick="fetchMealsDetails(${meal.idMeal})">
+    <div class="card bg-primary-subtle border-0 shadow-lg rounded-4 h-100" onclick="fetchMealsDetails(${meal.idMeal})">
         <div>
             <img src="${meal.strMealThumb}" alt="" class="w-100 object-fit-cover rounded-4" />
         </div>
@@ -28,6 +29,7 @@ const displayMeals = (meals) => {
     </div>
   `;
     mealsContainer.appendChild(mealDiv);
+    showLoading(false);
   }
 };
 
@@ -119,5 +121,14 @@ const displayMealDetails = (meal) => {
   detailsContainer.appendChild(detailsDiv);
 };
 
+// loading
+const showLoading = (isShow) => {
+  const loading = document.getElementById("loading");
+  if (isShow) {
+    loading.classList.remove("d-none");
+  } else {
+    loading.classList.add("d-none");
+  }
+};
 // default load all meals
 fetchMeals("");

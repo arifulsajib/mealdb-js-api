@@ -19,59 +19,22 @@
           <input id="search-input" class="px-2 py-1 rounded" type="text" placeholder="Search Meal" />
           <button class="btn btn-primary text-grey" onclick="searchHandler()">Search</button>
         </div>
-        <!-- display all meals -->
-        <div id="meals-container" class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 mt-3">
-          <!-- single item -->
-          <div class="col" data-bs-toggle="modal" data-bs-target="#detailsModal" type="button">
-            <div class="card bg-primary-subtle border-0 shadow-lg rounded-4">
-              <div>
-                <img src="https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg" alt="" class="w-100 object-fit-cover rounded-4" />
-              </div>
-              <div>
-                <h4 class="fw-semibold text-center mt-2 text-dark">Shusi</h4>
-              </div>
-            </div>
+        <!-- spinner -->
+        <div id="loading" class="d-none d-flex justify-content-center mt-5">
+          <div class="spinner-border" role="status" style="width: 3rem; height: 3rem">
+            <span class="visually-hidden">Loading...</span>
           </div>
+        </div>
+
+        <!-- display all meals -->
+        <div id="meals-container" class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 mt-3">
+          <!-- single item (from api)-->
         </div>
 
         <!-- item details modal -->
         <div class="modal fade" id="detailsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
           <div id="details-container" class="modal-dialog modal-lg">
-            <!-- Dynamic Content -->
-            <div class="modal-content bg-dark">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="detailsModalLabel">Shushi</h1>
-                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <!-- img and ingrediants -->
-                <div class="row g-3">
-                  <div class="col-4 d-flex align-items-center">
-                    <img class="w-100" src="https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg" alt="" />
-                  </div>
-                  <div class="col-8">
-                    <h4>Ingredents:</h4>
-                    <div class="row row-cols-2 row-cols-md-3">
-                      <!-- ingredent 1 -->
-                      <div class="col">
-                        <img src="https://www.themealdb.com/images/ingredients/Sushi%20Rice.png" alt="" width="100px" height="100px" />
-                        <p>300ml Sushi Rice</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Instructions -->
-                <div class="mt-5">
-                  <h5 class="text-center">Instructions:</h5>
-                  <p>
-                    STEP 1 TO MAKE SUSHI ROLLS: Pat out some rice. Lay a nori sheet on the mat, shiny-side down. Dip your hands in the vinegared water, then pat handfuls of rice on top in a 1cm thick layer, leaving the furthest edge from you clear.
-                  </p>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
-            </div>
+            <!-- Dynamic Content (From Api)-->
           </div>
         </div>
         <!-- end -->
