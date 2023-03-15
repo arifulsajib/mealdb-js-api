@@ -1,0 +1,14 @@
+/* poppin font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.fs-7 {
+  font-size: 0.8rem;
+}
+
+.text-grey {
+  color: rgba(255, 255, 255, 0.9);
+}
