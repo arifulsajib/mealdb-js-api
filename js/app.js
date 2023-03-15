@@ -23,7 +23,7 @@ const displayMeals = (meals) => {
         <div>
             <img src="${meal.strMealThumb}" alt="" class="w-100 object-fit-cover rounded-4" />
         </div>
-        <div>
+        <div class="h-100">
             <h4 class="fw-semibold text-center mt-2 text-dark">${meal.strMeal}</h4>
         </div>
     </div>
