@@ -1,5 +1,6 @@
 // fetch meals
 const fetchMeals = (search) => {
+  // showloading
   showLoading(true);
   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
     .then((res) => res.json())
@@ -8,9 +9,18 @@ const fetchMeals = (search) => {
 
 // display meals
 const displayMeals = (meals) => {
-  //   console.log(meals);
+  // console.log(meals);
   const mealsContainer = document.getElementById("meals-container");
   mealsContainer.innerHTML = "";
+
+  if (meals == null) {
+    showLoading(false);
+    showNotFound(true);
+    return;
+  } else {
+    showNotFound(false);
+  }
+
   for (const meal of meals) {
     const mealDiv = document.createElement("div");
     mealDiv.classList.add("col");
@@ -29,17 +39,29 @@ const displayMeals = (meals) => {
     </div>
   `;
     mealsContainer.appendChild(mealDiv);
-    showLoading(false);
   }
+
+  // hide loading
+  showLoading(false);
 };
 
-// search click handler
+// search btn click handler
 const searchHandler = () => {
   const searchInput = document.getElementById("search-input");
   const searchText = searchInput.value;
 
   fetchMeals(searchText);
 };
+
+//Enter click handler
+document.getElementById("search-input").addEventListener("keydown", (e) => {
+  if (e.key == "Enter") {
+    const searchInput = document.getElementById("search-input");
+    const searchText = searchInput.value;
+
+    fetchMeals(searchText);
+  }
+});
 
 // fetch meal details
 const fetchMealsDetails = (mealId) => {
@@ -124,6 +146,15 @@ const displayMealDetails = (meal) => {
 // loading
 const showLoading = (isShow) => {
   const loading = document.getElementById("loading");
+  if (isShow) {
+    loading.classList.remove("d-none");
+  } else {
+    loading.classList.add("d-none");
+  }
+};
+// no meal found
+const showNotFound = (isShow) => {
+  const loading = document.getElementById("not-found");
   if (isShow) {
     loading.classList.remove("d-none");
   } else {
